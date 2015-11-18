@@ -4,6 +4,8 @@ Requires the following packages.
 
 	npm install player
 	npm install socket.io-client
+	npm install libnotify 
+	sudo apt-get install libnotify-bin
 
 # Future work
 
@@ -15,8 +17,9 @@ Requires the following packages.
 - Search and add
 - Vote up/down
 
+
 ## Optional
 - last.fm
-- screen notification
+- ~~screen notification~~
 - visualisation
 

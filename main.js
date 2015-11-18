@@ -1,5 +1,6 @@
 var Player = require('player');
 var socket = require('socket.io-client')('http://grooveshare.co.uk/');
+var libnotify = require('libnotify');
 var uuid    = 'test-cli-app';
 var default_channel  = 1;
 //var current_song;
@@ -26,7 +27,7 @@ socket.on('channel.joined', function(data) {
 	player.add('http://grooveshare.co.uk/music/'+data.track.id+'.mp3');
 	//current_song = data;
 	console.log(data.track.track, " by ", data.track.artist);
-
+	libnotify.notify(data.track.track + " by " + data.track.artist);
 	// TODO: Set start point.
 	player.play();                   
 
@@ -42,6 +43,7 @@ socket.on('playlist.play', function(data) {
 	player.add('http://grooveshare.co.uk/music/'+data.track.id+'.mp3');
 	player.next();
 	console.log(data.track.track, " by ", data.track.artist);
+	libnotify.notify(data.track.track + " by " + data.track.artist);
 });
 
 // Not sure if this gets fired or not.
@@ -52,6 +54,7 @@ socket.on('play', function(data) {
 socket.on('track.queued', function(data) {
 	//player.add('http://grooveshare.co.uk/music/'+data.id+'.mp3');
 	console.log(data.track, " by ", data.artist, " - Added to Queue");
+	libnotify.notify(data.track + " by " + data.artist + " -Added to Queue");
 });
 
 player.on('playing', function(item){
