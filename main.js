@@ -26,8 +26,9 @@ socket.on('channel.joined', function(data) {
 	//socket.emit('tracklist.list');
 	player.add('http://grooveshare.co.uk/music/'+data.track.id+'.mp3');
 	//current_song = data;
+	
 	console.log(data.track.track, " by ", data.track.artist);
-	libnotify.notify(data.track.track + " by " + data.track.artist);
+	libnotify.notify(data.track.track + " by " + data.track.artist, {title : 'Music in your ears!' });
 	// TODO: Set start point.
 	player.play();                   
 
@@ -43,18 +44,13 @@ socket.on('playlist.play', function(data) {
 	player.add('http://grooveshare.co.uk/music/'+data.track.id+'.mp3');
 	player.next();
 	console.log(data.track.track, " by ", data.track.artist);
-	libnotify.notify(data.track.track + " by " + data.track.artist);
-});
-
-// Not sure if this gets fired or not.
-socket.on('play', function(data) {
-	console.log(data);
+	libnotify.notify(data.track.track + " by " + data.track.artist, {title : 'Music in your ears!' });
 });
 
 socket.on('track.queued', function(data) {
 	//player.add('http://grooveshare.co.uk/music/'+data.id+'.mp3');
 	console.log(data.track, " by ", data.artist, " - Added to Queue");
-	libnotify.notify(data.track + " by " + data.artist + " -Added to Queue");
+	libnotify.notify(data.track + " by " + data.artist, {title : 'Queued' });
 });
 
 player.on('playing', function(item){
