@@ -4,8 +4,9 @@ var libnotify = require('libnotify');
 var uuid    = 'test-cli-app';
 var default_channel  = 1;
 //var current_song;
-
 var player = new Player();
+
+process.title = "Grooveshare";
 
 socket.on('connect', function() {
 	socket.emit('register', { uuid: uuid });
@@ -58,6 +59,6 @@ player.on('playing', function(item){
 }); 
 
 player.on('error', function(err){
-	console.log(err);
+	//console.log(err);
 });
 
