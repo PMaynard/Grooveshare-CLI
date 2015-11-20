@@ -1,0 +1,23 @@
+{
+  "name": "Grooveshare-CLI",
+  "version": "0.0.0",
+  "description": "Commandline interface for Grooveshare",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PMaynard/Grooveshare-CLI.git"
+  },
+  "author": "Pete Maynard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PMaynard/Grooveshare-CLI/issues"
+  },
+  "dependencies": {
+    "libnotify": "^1.0.4",
+    "player": "^0.6.1",
+    "socket.io-client": "^1.3.7"
+  }
+}
