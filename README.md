@@ -2,10 +2,11 @@
 
 Requires the following packages.
 
-	npm install player
-	npm install socket.io-client
-	npm install libnotify 
-	sudo apt-get install libnotify-bin
+	npm install player socket.io-client libnotify
+
+Which in turn may require some of these packages
+
+	sudo apt-get install libnotify-bin libasound2-dev 
 
 # Future work
 
