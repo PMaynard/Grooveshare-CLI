@@ -3,33 +3,28 @@ var socket = require('socket.io-client')('http://grooveshare.co.uk/');
 var libnotify = require('libnotify');
 var uuid    = 'test-cli-app';
 var default_channel  = 1;
-//var current_song;
 var player = new Player();
+var UI = require ('./ui.js');
+
+ui = new UI();
 
 process.title = "Grooveshare";
 
 socket.on('connect', function() {
 	socket.emit('register', { uuid: uuid });
-	// console.log("Connected," uuid);
 });
-
-// Which channel?
-
-//socket.on('channels.list', function(data) {
-//	console.log(data);
-	// channels = data;
-	//renderChannelList(data);
-//});
 
 socket.emit('channel.join', default_channel);
 
 socket.on('channel.joined', function(data) {
 	//socket.emit('tracklist.list');
 	player.add('http://grooveshare.co.uk/music/'+data.track.id+'.mp3');
-	//current_song = data;
-	
+
+	// Notify User.
 	console.log(data.track.track, " by ", data.track.artist);
+	ui.setTrack(data.track.artist, data.track.track);
 	libnotify.notify(data.track.track + " by " + data.track.artist, {title : 'Music in your ears!' });
+	
 	// TODO: Set start point.
 	player.play();                   
 
@@ -44,7 +39,10 @@ socket.on('playlist.play', function(data) {
 	// console.log(data.track, data.position);
 	player.add('http://grooveshare.co.uk/music/'+data.track.id+'.mp3');
 	player.next();
+
+	// Notify User.
 	console.log(data.track.track, " by ", data.track.artist);
+	ui.setTrack(data.track.artist, data.track.track);
 	libnotify.notify(data.track.track + " by " + data.track.artist, {title : 'Music in your ears!' });
 });
 
@@ -59,6 +57,6 @@ player.on('playing', function(item){
 }); 
 
 player.on('error', function(err){
-	//console.log(err);
+	//console.log("Player Error:" , err);
 });
 
