@@ -23,7 +23,7 @@ socket.on('channel.joined', function(data) {
 	player.add('http://grooveshare.co.uk/music/'+data.track.id+'.mp3');
 
 	// Notify User.
-	console.log(data.track.track, " by ", data.track.artist);
+	// console.log(data.track.track, " by ", data.track.artist);
 	ui.setTrack(data.track.artist, data.track.track);
 	libnotify.notify(data.track.track + " by " + data.track.artist, {title : 'Music in your ears!' });
 	
@@ -43,14 +43,14 @@ socket.on('playlist.play', function(data) {
 	player.next();
 
 	// Notify User.
-	console.log(data.track.track, " by ", data.track.artist);
+	// console.log(data.track.track, " by ", data.track.artist);
 	ui.setTrack(data.track.artist, data.track.track);
 	libnotify.notify(data.track.track + " by " + data.track.artist, {title : 'Music in your ears!' });
 });
 
 socket.on('track.queued', function(data) {
 	//player.add('http://grooveshare.co.uk/music/'+data.id+'.mp3');
-	console.log(data.track, " by ", data.artist, " - Added to Queue");
+	// console.log(data.track, " by ", data.artist, " - Added to Queue");
 	libnotify.notify(data.track + " by " + data.artist, {title : 'Queued' });
 });
 

@@ -49,6 +49,36 @@ UI.prototype.renderLayout = function() {
     });
     this.screen.append(this.elements['nowPlaying']);
 
+    // Main Window
+    this.elements['main'] = blessed.Box({
+      border: {
+        type: 'line'
+      },
+      label: ' Output Console ',
+      align: 'left',
+      valign: 'top',
+      width: '70%',
+      height: '98%',
+      top: 0,
+      left: 0
+    });
+    this.screen.append(this.elements['main']);
+
+    // SideBar
+    this.elements['sidebar'] = blessed.Box({
+        border: {
+            type: 'line'
+        },
+        label: ' Queue ',
+        align: 'left',
+        valign: 'top',
+        width: '30%',
+        height: '98%',
+        top: 0,
+        left: '71%'
+    });
+    this.screen.append(this.elements['sidebar']);
+
     this.screen.render();
 }
 
@@ -58,7 +88,14 @@ UI.prototype.setTrack = function(artist, track){
 	current_artist = artist;
 	current_track  = track;
 	this.elements['nowPlaying'].setContent(util.format(" {bold}%s{/bold} - %s [%s/%s]", current_track ,current_artist ,current_pos, current_length));
+	this.updateMain(artist, track);
 	this.screen.render();
+}
+
+UI.prototype.updateMain = function(artist, track) {
+	var self = this;
+	var d = new Date();
+	this.elements['main'].insertBottom(util.format("%s:%s - %s by %s", d.getHours(), d.getMinutes(), artist, track));
 }
 
 module.exports = UI;
