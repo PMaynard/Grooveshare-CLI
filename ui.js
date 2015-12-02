@@ -9,7 +9,7 @@ var current_length = "03:42";
 var UI = function() {
     this.elements = [];
 
-    this.colors = {'main': {'fg': 'white', 'bg': 'black'}, 'highlight': {'fg': 'black', 'bg': 'white'}};
+    this.colors = {'main': {'fg': 'white', 'bg': 'black'}, 'highlight': {'fg': 'white', 'bg': 'black'}};
 
     // Create a screen object.
     this.screen = blessed.screen({
