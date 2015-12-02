@@ -85,18 +85,23 @@ UI.prototype.renderLayout = function() {
 /* Set Functions */
 UI.prototype.setTrack = function(artist, track){
 	var self = this;
+	var d = new Date();
 	current_artist = artist;
 	current_track  = track;
-	this.elements['nowPlaying'].setContent(util.format(" {bold}%s{/bold} - %s [%s/%s]", current_track ,current_artist ,current_pos, current_length));
-	this.updateMain(artist, track);
+	
+	// make the screens say the right things
+	this.elements['nowPlaying'].setContent(
+			util.format(" {bold}%s{/bold} - %s [%s/%s]", 
+				current_track ,current_artist ,current_pos, current_length));
+
+	this.elements['main'].insertBottom(
+			util.format("%s:%s - %s by %s", 
+				d.getHours(), d.getMinutes(), current_track, current_artist));
+
+	// Finally render to the screen.
 	this.screen.render();
 }
 
-UI.prototype.updateMain = function(artist, track) {
-	var self = this;
-	var d = new Date();
-	this.elements['main'].insertBottom(util.format("%s:%s - %s by %s", d.getHours(), d.getMinutes(), artist, track));
-}
 
 module.exports = UI;
 
