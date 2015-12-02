@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var Player = require('player');
 var socket = require('socket.io-client')('http://grooveshare.co.uk/');
 var libnotify = require('libnotify');
