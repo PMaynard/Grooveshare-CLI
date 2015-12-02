@@ -1,6 +1,6 @@
 # Grooveshare CLI 
 
-CLI Interface for [http://grooveshare.co.uk](Grooveshare).
+CLI Interface for [Grooveshare](http://grooveshare.co.uk)
 
 ![Alpha Screenshot](screenshot-alph01.png)
 
