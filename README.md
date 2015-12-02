@@ -1,5 +1,9 @@
 # Grooveshare CLI 
 
+CLI Interface for [http://grooveshare.co.uk](Grooveshare).
+
+![Alpha Screenshot](screenshot-alph01.png)
+
 Requires the following packages.
 
 	npm install player socket.io-client libnotify
