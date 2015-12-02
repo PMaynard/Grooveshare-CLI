@@ -26,7 +26,7 @@ Which in turn may require some of these packages
 
 # FAQ
 
-## 1. How can I add it to my system path. 
+### 1. How can I add it to my system path. 
 
 If it does not already exist, create ```%HOME/bin```.
 
@@ -38,7 +38,7 @@ Enable execution of the linked file:
 
 	chmod +x $HOME/bin/grooveshare
 
-*Optional* Depending on how your bash is configured, you might need to add
+*Optional*: Depending on how your bash is configured, you might need to add
 ```$HOME/bin``` to you path. The simpliest method is to add the following line
 to the end of your ```.bashrc```:
 
@@ -48,12 +48,12 @@ to the end of your ```.bashrc```:
 
 # Trouble
 
-1. I get this alsa error?!
+### 1. I get this alsa error?!
 
-	ALSA lib pcm_dmix.c:1022:(snd_pcm_dmix_open) unable to open slave
-	[../deps/mpg123/src/output/alsa.c:165] error: cannot open device default
-	node: pcm_params.c:2286: snd_pcm_hw_refine: Assertion `pcm && params' failed.
-	Aborted (core dumped)
+> ALSA lib pcm_dmix.c:1022:(snd_pcm_dmix_open) unable to open slave
+> [../deps/mpg123/src/output/alsa.c:165] error: cannot open device default
+> node: pcm_params.c:2286: snd_pcm_hw_refine: Assertion `pcm && params' failed.
+> Aborted (core dumped)
 
 This can happen if you have two devices, so for example on my laptop I have my
 HDMI output (HDA Intel HDMI) and my audio card (HDA Intel PCH). To check open
